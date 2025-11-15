@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+.env
+.env.*
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+coverage.xml
+.cache
+pytest_cache/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm / VSCode
+.idea/
+.vscode/
+
+# SQLAlchemy migrations (compiled)
+alembic/*.pyc
+alembic/versions/*.pyc
+
+# MyPy / Pyright
+.mypy_cache/
+.pyright
+
+# Local data
+*.sqlite3
+*.db
+
+# Docker
+docker-compose.override.yml
+*.pid
+
+# Logs
+*.log
+logs/
