@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
-from app.schemas.requests import TeamCreateRequest
-from app.schemas.team import Team, TeamResponse
+from app.schemas.requests_schema import TeamCreateRequest
+from app.schemas.team_schema import Team, TeamResponse
 from app.services.team_service import TeamService
 
 router = APIRouter()

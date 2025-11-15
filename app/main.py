@@ -4,6 +4,8 @@ from fastapi.responses import JSONResponse
 from app.api.pull_request_api import router as pr_router
 from app.api.team_api import router as team_router
 from app.api.user_api import router as user_router
+from app.api.stats_api import stats_router
+
 
 app = FastAPI()
 
@@ -11,6 +13,7 @@ app = FastAPI()
 app.include_router(team_router, prefix="/team", tags=["Teams"])
 app.include_router(user_router, prefix="/users", tags=["Users"])
 app.include_router(pr_router, prefix="/pullRequest", tags=["PullRequests"])
+app.include_router(stats_router, prefix="/stats", tags=["Stats"])
 
 
 ERROR_STATUS = {

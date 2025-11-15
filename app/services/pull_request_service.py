@@ -13,7 +13,7 @@ from app.repositories.pull_request_reviewer_repository import (
 )
 from app.repositories.team_repository import TeamRepository
 from app.repositories.user_repository import UserRepository
-from app.schemas.pull_request import PullRequest
+from app.schemas.pull_request_schema import PullRequest
 
 
 class PullRequestService:

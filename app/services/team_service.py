@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.repositories.team_repository import TeamRepository
 from app.repositories.user_repository import UserRepository
-from app.schemas.team import Team, TeamMember
+from app.schemas.team_schema import Team, TeamMember
 
 
 class TeamService:

@@ -5,8 +5,8 @@ from app.models.team_model import Team
 from app.models.user_model import User as UserModel
 from app.repositories.pull_request_repository import PullRequestRepository
 from app.repositories.user_repository import UserRepository
-from app.schemas.pull_request import PullRequestShort
-from app.schemas.user import User
+from app.schemas.pull_request_schema import PullRequestShort
+from app.schemas.user_schema import User
 
 
 class UserService:

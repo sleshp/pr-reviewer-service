@@ -2,12 +2,12 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db import get_session
-from app.schemas.pull_request import (
+from app.schemas.pull_request_schema import (
     PullRequest,
     PullRequestResponse,
     ReassignReviewerResponse,
 )
-from app.schemas.requests import (
+from app.schemas.requests_schema import (
     PullRequestCreateRequest,
     PullRequestReassignRequest,
 )

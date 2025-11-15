@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from app.schemas.pull_request import PullRequestShort
+from app.schemas.pull_request_schema import PullRequestShort
 
 
 class User(BaseModel):

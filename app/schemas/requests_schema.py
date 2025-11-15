@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from .team import TeamMember
+from .team_schema import TeamMember
 
 
 class TeamCreateRequest(BaseModel):
