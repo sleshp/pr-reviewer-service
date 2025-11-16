@@ -41,6 +41,3 @@ class StatsRepository:
             "assignments_by_user": assignments_by_user,
             "pr_by_author": pr_by_author,
         }
-
-
-

@@ -2,10 +2,9 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
 from app.api.pull_request_api import router as pr_router
+from app.api.stats_api import stats_router
 from app.api.team_api import router as team_router
 from app.api.user_api import router as user_router
-from app.api.stats_api import stats_router
-
 
 app = FastAPI()
 

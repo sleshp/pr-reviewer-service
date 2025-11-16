@@ -10,7 +10,7 @@ from app.services.user_service import UserService
 router = APIRouter()
 
 
-@router.post("/setIsActive", response_model=UserResponse)
+@router.post("/setIsActive", response_model=UserResponse, status_code=201)
 async def set_is_active(
     data: UserSetActiveRequest,
     session: AsyncSession = Depends(get_session),

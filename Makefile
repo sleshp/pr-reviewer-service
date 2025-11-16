@@ -1,46 +1,42 @@
 PYTHON := python
-PIP := $(PYTHON) -m pip
+PIP := pip
 
-VENV_DIR := .venv
-ACTIVATE := . $(VENV_DIR)/bin/activate
-
-.PHONY: help venv install run run-dev lint fmt test alembic-up alembic-downgrade docker-up docker-down docker-rebuild
+.PHONY: help venv install run run-dev lint fmt test
 
 help:
 	@echo "Доступные команды:"
-	@echo "  make venv            - создать виртуальное окружение (.venv)"
-	@echo "  make install         - установить зависимости в .venv"
-	@echo "  make run-dev         - запустить FastAPI локально (uvicorn, порт 8080)"
-	@echo "  make alembic-up      - применить миграции (alembic upgrade head)"
-	@echo "  make alembic-downgrade REV=... - откатить миграции до ревизии"
-	@echo "  make lint            - запустить black и isort в режиме проверки"
-	@echo "  make fmt             - автоформатирование black + isort"
-	@echo "  make docker-up       - запустить сервис и БД через docker compose"
-	@echo "  make docker-down     - остановить docker compose и удалить контейнеры"
-	@echo "  make docker-rebuild  - пересобрать образы и запустить заново"
+	@echo "  make venv    - создать виртуальное окружение"
+	@echo "  make install - установить зависимости"
+	@echo "  make run-dev - запустить сервер"
+	@echo "  make fmt     - автоформатирование"
+	@echo "  make test    - запустить тесты"
 
 venv:
-	$(PYTHON) -m venv $(VENV_DIR)
+	$(PYTHON) -m venv .venv
 
 install: venv
-	$(ACTIVATE) && $(PIP) install --upgrade pip && $(PIP) install -r requirements.txt
+	$(PIP) install --upgrade pip
+	$(PIP) install -r requirements.txt
 
 run-dev:
-	$(ACTIVATE) && uvicorn app.main:app --reload --host 0.0.0.0 --port 8080
-
-alembic-up:
-	$(ACTIVATE) && alembic upgrade head
-
-alembic-downgrade:
-	$(ACTIVATE) && alembic downgrade $(REV)
-
-lint:
-	$(ACTIVATE) && black --check app alembic
-	$(ACTIVATE) && isort --check-only app alembic
+	$(PYTHON) -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8080
 
 fmt:
-	$(ACTIVATE) && isort app alembic
-	$(ACTIVATE) && black app alembic
+	$(PYTHON) -m isort app alembic
+	$(PYTHON) -m black app alembic
+
+lint:
+	$(PYTHON) -m black --check app alembic
+	$(PYTHON) -m isort --check-only app alembic
+
+test:
+	$(PYTHON) -m pytest -q
+
+alembic-up:
+	$(PYTHON) -m alembic upgrade head
+
+alembic-downgrade:
+	$(PYTHON) -m alembic downgrade $(REV)
 
 docker-up:
 	docker compose up --build

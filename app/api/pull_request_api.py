@@ -16,7 +16,7 @@ from app.services.pull_request_service import PullRequestService
 router = APIRouter()
 
 
-@router.post("/create", response_model=PullRequestResponse)
+@router.post("/create", response_model=PullRequestResponse, status_code=201)
 async def create_pr(
     data: PullRequestCreateRequest,
     session: AsyncSession = Depends(get_session),
